@@ -21,7 +21,7 @@ export default {
   ruby: {
     program: "ruby",
     repo: "https://github.com/ruby/ruby.wasm",
-    path: "https://cdn.jsdelivr.net/npm/ruby-head-wasm-wasi@latest/dist",
+    path: "https://cdn.jsdelivr.net/gh/elasticspoon/prebuild-ruby-wasm@main/dist",
     file: "ruby.wasm",
   },
   sqlite: {
