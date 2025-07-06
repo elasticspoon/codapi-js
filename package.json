@@ -1,6 +1,6 @@
 {
   "name": "@elasticspoon/codapi",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Interactive code examples for documentation, education and fun.",
   "author": "Anton Zhiyanov",
   "license": "MIT",
@@ -14,5 +14,8 @@
   ],
   "devDependencies": {
     "esbuild": "0.19.2"
+  },
+  "dependencies": {
+    "@antonz/runno": "^0.6.1"
   }
 }
