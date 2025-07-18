@@ -1,11 +1,9 @@
 // Execute code using the Runno WASI runtime.
 
-import * as runno from '@antonz/runno';
 import { codobj } from "../codobj.js";
 import boxes from "./wasi/boxes.js";
 import commands from "./wasi/commands.js";
-
-const { WASI } = window.Runno;
+import { WASI } from "@antonz/runno/dist/runno.mjs";
 const programs = {};
 
 // base URL (absolute or relative) for loading WASI binaries,
