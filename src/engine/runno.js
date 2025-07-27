@@ -11,22 +11,35 @@ const programs = {};
 const basePath = new URL(getScriptUrl()).searchParams.get("path");
 
 // init downloads (if necessary) and returns a WASI binary by name.
-async function init(name) {
+async function init(name, version) {
   if (!(name in boxes)) {
     throw Error(`unknown box: ${name}`);
   }
-  if (name in programs) {
-    return programs[name];
-  }
+
   const box = boxes[name];
-  const path = basePath || box.path;
-  const bytes = await readFile(`${path}/${box.file}`);
-  programs[name] = () =>
+  let versionedBox = box;
+
+  if (box.versions) {
+    version = version || box.defaultVersion;
+    if (!(version in box.versions)) {
+      throw Error(`unknown version ${version} for box ${name}`);
+    }
+    versionedBox = box.versions[version];
+  }
+
+  const cacheKey = `${name}:${version || ''}`;
+  if (cacheKey in programs) {
+    return programs[cacheKey];
+  }
+
+  const path = basePath || versionedBox.path;
+  const bytes = await readFile(`${path}/${versionedBox.file}`);
+  programs[cacheKey] = () =>
     new Response(bytes, {
       status: 200,
       headers: { "content-type": "application/wasm" },
     });
-  return programs[name];
+  return programs[cacheKey];
 }
 
 // exec executes a specific command using a WASI binary.
@@ -75,7 +88,7 @@ function prepareRequest(step, req) {
 // execStep executes a specific command step.
 async function execStep(step, req) {
   const box = boxes[step.box];
-  const program = await init(step.box);
+  const program = await init(step.box, req.version);
   const args = buildArgs(step, req);
   const fs = buildFileSystem(req);
   const output = await runProgram(box, program, args, fs);

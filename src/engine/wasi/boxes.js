@@ -19,10 +19,33 @@ export default {
     file: "python.wasm",
   },
   ruby: {
-    program: "ruby",
-    repo: "https://github.com/ruby/ruby.wasm",
-    path: "https://ruby-wasm.yuribocharov.dev/ruby-head-wasm32-unknown-wasip1-full",
-    file: "ruby.wasm",
+    defaultVersion: "head",
+    versions: {
+      head: {
+        program: "ruby",
+        repo: "https://github.com/ruby/ruby.wasm",
+        path: "https://ruby-wasm.yuribocharov.dev/ruby-head-wasm32-unknown-wasip1-full",
+        file: "ruby.wasm",
+      },
+      "3.4": {
+        program: "ruby",
+        repo: "https://github.com/ruby/ruby.wasm",
+        path: "https://ruby-wasm.yuribocharov.dev/ruby-3.4-wasm32-unknown-wasip1-full",
+        file: "ruby.wasm",
+      },
+      "3.3": {
+        program: "ruby",
+        repo: "https://github.com/ruby/ruby.wasm",
+        path: "https://ruby-wasm.yuribocharov.dev/ruby-3.3-wasm32-unknown-wasip1-full",
+        file: "ruby.wasm",
+      },
+      "3.2": {
+        program: "ruby",
+        repo: "https://github.com/ruby/ruby.wasm",
+        path: "https://ruby-wasm.yuribocharov.dev/ruby-3.2-wasm32-unknown-wasip1-full",
+        file: "ruby.wasm",
+      },
+    }
   },
   sqlite: {
     program: "sqlite3",
