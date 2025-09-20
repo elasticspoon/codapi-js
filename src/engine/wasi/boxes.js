@@ -27,12 +27,6 @@ export default {
         path: "https://ruby-wasm.yuribocharov.dev/ruby-head-wasm32-unknown-wasip1-full",
         file: "ruby.wasm",
       },
-      "head-unstable": {
-        program: "ruby",
-        repo: "https://github.com/ruby/ruby.wasm",
-        path: "https://ruby-wasm.yuribocharov.dev/ruby-head-unstable-wasm32-unknown-wasip1-full",
-        file: "ruby.wasm",
-      },
       "3.4": {
         program: "ruby",
         repo: "https://github.com/ruby/ruby.wasm",

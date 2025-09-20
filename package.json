@@ -1,6 +1,6 @@
 {
   "name": "@elasticspoon/codapi",
-  "version": "0.0.7",
+  "version": "0.0.6",
   "description": "Interactive code examples for documentation, education and fun.",
   "author": "Anton Zhiyanov",
   "license": "MIT",
